@@ -1,0 +1,28 @@
+                    <div class="card"
+                    (click)="menuClickOcul()"
+                    (contextmenu)="onRightClick()"
+                    >
+                        <div class="card-body cardcontentbody">
+                            <div class="card-header">
+                                <img src="../../assets/img/{{producto.imagen}}" alt="">
+                            </div>
+                            <div class="text-center cardcontent h1">
+                                <p>{{producto.titulo}}</p>
+                                <hr>
+                                <span>{{producto.texto}}</span>
+                            </div>
+                        </div>
+                        <!-- disabled propiedad para html para validar si es true o false -->
+                        <!-- ngclass si itemdisabled sea diferente al valor original -->
+                        <div class="card-bottom bottomcard" style="text-align: right;">
+                            <button class="button is-primary"
+                            [disabled]="isItemDisabled()"
+                            (click)="selecionarItem(producto)"
+                            [ngClass]="{'is-danger': !isItemDisabled()}">{{accioncompra}}</button>
+                        </div>
+                    </div>
+
+                    <div class="contextual" [ngClass]="{'visible': menuVisible}">
+                        {{producto.titulo}}
+                        {{producto.precio | currency}}
+                    </div>
